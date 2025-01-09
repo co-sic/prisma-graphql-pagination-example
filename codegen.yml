@@ -1,0 +1,19 @@
+overwrite: true
+schema: './src/typedefs/index.ts'
+require: 'ts-node/register/transpile-only'
+generates:
+  src/generated/graphql.ts:
+    config:
+      namingConvention:
+        enumValues: 'change-case#upperCase'
+        typeNames: 'keep'
+      federation: true
+      useIndexSignature: true
+      noSchemaStitching: true
+      optionalResolveType: true
+      contextType: ../context#Context
+      scalars:
+        ID: string
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
